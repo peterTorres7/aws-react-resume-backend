@@ -1,4 +1,13 @@
 terraform {
+  backend "remote" {
+    hostname = "app.terraform.io"
+    organization = "PeterTorres"
+
+    workspaces {
+      name = "aws-react-resume-backend"
+    }
+  }   
+
   required_providers {
     aws = {
       source = "hashicorp/aws"
@@ -12,7 +21,7 @@ provider "aws" {
 }
 
 resource "aws_s3_bucket_website_configuration" "website_bucket" {
-  bucket = aws_s3_bucket.website_bucket.id
+  bucket = "website-bucket-test"
 
   index_document {
     suffix = "index.html"
