@@ -20,10 +20,6 @@ provider "aws" {
   region = var.region
 }
 
-resource "aws_s3_bucket_website_configuration" "website_bucket" {
+resource "aws_s3_bucket" "website_bucket" {
   bucket = "website-bucket-test"
-
-  index_document {
-    suffix = "index.html"
-  }
 }
