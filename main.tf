@@ -26,5 +26,4 @@ resource "aws_s3_bucket_website_configuration" "website_bucket" {
   index_document {
     suffix = "index.html"
   }
-
 }
