@@ -20,6 +20,10 @@ provider "aws" {
   region = var.region
 }
 
-resource "aws_s3_bucket" "peter_torres_website_bucket" {
-  bucket = "peter-torres-website-bucket-test"
+resource "aws_s3_bucket_website_configuration" "website_bucket" {
+  bucket = var.bucket_name
+
+  index_document {
+    suffix = "index.html"
+  }
 }
