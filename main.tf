@@ -20,8 +20,12 @@ provider "aws" {
   region = var.region
 }
 
-resource "aws_s3_bucket_website_configuration" "website_bucket" {
+resource "aws_s3_bucket" "website_bucket" {
   bucket = var.bucket_name
+}
+
+resource "aws_s3_bucket_website_configuration" "website_bucket_configuration" {
+  bucket = aws_s3_bucket.website_bucket.bucket
 
   index_document {
     suffix = "index.html"
