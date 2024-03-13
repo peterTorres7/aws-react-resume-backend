@@ -2,7 +2,7 @@ resource "aws_s3_bucket" "website_bucket" {
     bucket = var.bucket_name
 }
 
-resource "aws_bucket_policy" "bucket_policy" {
+resource "aws_s3_bucket_policy" "bucket_policy" {
     bucket = aws_s3_bucket.website_bucket.bucket
     policy = data.aws_iam_policy_document.allow_access.json
 }
@@ -11,7 +11,7 @@ data "aws_iam_policy_document" "allow_access" {
     statement {
         principals {
             type = "AWS"
-            identifiers = "*"
+            identifiers = ["*"]
         }
         actions = [
             "s3:GetObject",
