@@ -30,7 +30,7 @@ data "aws_iam_policy_document" "allow_access" {
         ]
     }
 }
-            "Resource": "arn:aws:s3:::petertorres.link/*"
+
 resource "aws_s3_bucket_website_configuration" "website_bucket_config" {
   bucket = aws_s3_bucket.website_bucket.bucket
 
