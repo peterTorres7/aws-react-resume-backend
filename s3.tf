@@ -18,15 +18,15 @@ resource "aws_s3_bucket_public_access_block" "bucket_public_access" {
   restrict_public_buckets = false
 }
 
-# resource "aws_s3_bucket_acl" "bucket_acl" {
-#     depends_on = [
-#         aws_s3_bucket_ownership_controls.bucket_controls,
-#         aws_s3_bucket_public_access_block.bucket_public_access,
-#     ]
+resource "aws_s3_bucket_acl" "bucket_acl" {
+    depends_on = [
+        aws_s3_bucket_ownership_controls.bucket_controls,
+        aws_s3_bucket_public_access_block.bucket_public_access,
+    ]
 
-#     bucket = aws_s3_bucket.website_bucket.id
-#     acl = "public-read"
-# }
+    bucket = aws_s3_bucket.website_bucket.id
+    acl = "public-read"
+}
 
 resource "aws_s3_bucket_policy" "bucket_policy" {
     bucket = aws_s3_bucket.website_bucket.bucket
