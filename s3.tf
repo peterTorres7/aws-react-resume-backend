@@ -48,10 +48,10 @@ data "aws_iam_policy_document" "allow_access" {
     }
 }
 
-# resource "aws_s3_bucket_website_configuration" "website_bucket_config" {
-#   bucket = aws_s3_bucket.website_bucket.bucket
+resource "aws_s3_bucket_website_configuration" "website_bucket_config" {
+  bucket = aws_s3_bucket.website_bucket.bucket
 
-#   index_document {
-#     suffix = "index.html"
-#   }
-# }
+  index_document {
+    suffix = "index.html"
+  }
+}
