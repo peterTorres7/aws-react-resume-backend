@@ -8,7 +8,7 @@ resource "aws_s3_bucket" "website_bucket" {
 #         object_ownership = "BucketOwnerPreferred"
 #     }
 # }
-
+#
 resource "aws_s3_bucket_public_access_block" "bucket_public_access" {
   bucket = aws_s3_bucket.website_bucket.id
 
