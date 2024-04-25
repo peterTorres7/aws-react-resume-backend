@@ -1,12 +1,4 @@
 terraform {
-#   backend "remote" {
-#     hostname     = "app.terraform.io"
-#     organization = "PeterTorres"
-
-#     workspaces {
-#       name = "aws-react-resume-backend"
-#     }
-#   }
 
   cloud {
     hostname = "app.terraform.io"
