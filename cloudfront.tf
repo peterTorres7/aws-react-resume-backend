@@ -1,6 +1,6 @@
 locals {
     s3_origin_id = "${aws_s3_bucket.website_bucket.bucket}.s3-website-us-east-1.amazonaws.com"
-
+    hosted_zone_id = "Z10393511V40DDR2ANT7H"
 }
 
 resource "aws_cloudfront_distribution" "s3_distribution" {
@@ -19,7 +19,7 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
     default_cache_behavior {
         allowed_methods = ["GET", "HEAD", "OPTIONS"]
         cached_methods = ["GET", "HEAD", "OPTIONS"]
-        target_origin_id = local.s3_origin_id
+        target_origin_id = aws_s3_bucket.website_bucket.bucket #local.s3_origin_id
 
         forwarded_values {
           query_string = false
