@@ -17,9 +17,9 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
     wait_for_deployment = true
 
     default_cache_behavior {
-        allowed_methods = ["GET", "HEAD"]
-        cached_methods = ["GET", "HEAD"]
-        target_origin_id = local.s3_origin_id
+        allowed_methods = ["GET", "HEAD", "OPTIONS"]
+        cached_methods = ["GET", "HEAD", "OPTIONS"]
+        target_origin_id = aws_s3_bucket.website_bucket.bucket
 
         forwarded_values {
           query_string = false
