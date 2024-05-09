@@ -1,6 +1,7 @@
 locals {
     s3_origin_id = "${aws_s3_bucket.website_bucket.bucket}.s3-website-us-east-1.amazonaws.com"
     hosted_zone_id = "Z10393511V40DDR2ANT7H"
+    cert_arn = "arn:aws:acm:us-east-1:243481346369:certificate/a4108c08-5bfe-413e-b5a6-931388bdd390"
 }
 
 resource "aws_cloudfront_distribution" "s3_distribution" {
@@ -47,7 +48,7 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
     viewer_certificate {
         cloudfront_default_certificate = true
         minimum_protocol_version = "TLSv1.2_2021"
-        acm_certificate_arn = "arn:aws:acm:us-east-1:243481346369:certificate/a4108c08-5bfe-413e-b5a6-931388bdd390"
+        acm_certificate_arn = local.cert_arn
         ssl_support_method = "sni-only"
     }
 
