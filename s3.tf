@@ -30,15 +30,17 @@ resource "aws_s3_bucket_policy" "bucket_policy" {
 data "aws_iam_policy_document" "allow_access" {
     statement {
         principals {
-            type = "AWS"
-            identifiers = ["*"]
+            type = "Service"
+            identifiers = ["cloudfront.amazonaws.com"]
         }
-        actions = [
-            "s3:GetObject",
-        ]
-        resources = [
-            "${aws_s3_bucket.website_bucket.arn}/*",
-        ]
+        actions = ["s3:GetObject"]
+        resources = ["${aws_s3_bucket.website_bucket.arn}/*"]
+
+        condition {
+          test = "StringEquals"
+          values = [aws_cloudfront_distribution.s3_distribution.arn]
+          variable = "AWS:SourceArn"
+        }
     }
 }
 
