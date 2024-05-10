@@ -17,7 +17,7 @@ resource "aws_route53_record" "reroute" {
   
   alias {
     name = "www.petertorres.link"
-    zone_id = aws_cloudfront_distribution.s3_distribution.zone_id
+    zone_id = aws_cloudfront_distribution.s3_distribution.hosted_zone_id
     evaluate_target_health = false
   }
 }
