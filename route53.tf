@@ -23,7 +23,7 @@ resource "aws_route53_record" "wwww" {
 # }
 
 resource "aws_route53_record" "redirect_record" {
-  zone_id = aws_route53_zone.example_zone.zone_id
+  zone_id = aws_route53_zone.example_zone.hosted_zone_id
   name    = "petertorres.link"
   type    = "CNAME"
   ttl     = 300
