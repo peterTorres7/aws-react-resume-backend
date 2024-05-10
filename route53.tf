@@ -10,7 +10,7 @@ resource "aws_route53_record" "wwww" {
   }
 }
 
-resource "aws_route53_record" "reroute" {
+resource "aws_route53_record" "subdomain" {
   zone_id = local.hosted_zone_id
   name = "petertorres.link"
   type = "A"
