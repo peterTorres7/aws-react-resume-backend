@@ -9,3 +9,15 @@ resource "aws_route53_record" "wwww" {
     evaluate_target_health = false
   }
 }
+
+resource "aws_route53_record" "reroute" {
+  zone_id = local.hosted_zone_id
+  name = "petertorres.link"
+  type = "A"
+  
+  alias {
+    name = "www.petertorres.link"
+    zone_id = aws_cloudfront_distribution.s3_distribution.zone_id
+    evaluate_target_health = false
+  }
+}
