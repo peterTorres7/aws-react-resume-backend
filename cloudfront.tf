@@ -14,7 +14,7 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
     enabled = true
     is_ipv6_enabled = true
     default_root_object = "index.html"
-    aliases = ["www.petertorres.link"]
+    aliases = ["petertorres.link", "www.petertorres.link"]
     wait_for_deployment = true
 
     default_cache_behavior {
