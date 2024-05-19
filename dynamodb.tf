@@ -35,7 +35,7 @@ resource "aws_appautoscaling_policy" "visits_table_read_policy" {
       predefined_metric_type = "DynamoDBReadCapacityUtilization"
     }
 
-    target_value = 70.0
+    target_value = 70
     scale_in_cooldown = 60
     scale_out_cooldown = 60
   }
@@ -61,8 +61,20 @@ resource "aws_appautoscaling_policy" "visits_table_write_policy" {
       predefined_metric_type = "DynamoDBWriteCapacityUtilization"
     }
 
-    target_value = 70.0
+    target_value = 70
     scale_in_cooldown = 60
     scale_out_cooldown = 60
   } 
+}
+
+resource "aws_dynamodb_table_item" "visits" {
+  table_name = aws_dynamodb_table.visits_table.name
+  hash_key = aws_dynamodb_table.visits_table.hash_key
+
+  item = <<ITEM
+{
+  "id": {"S": "id"},
+  "visit_count": {"N": "1"}
+}
+ITEM
 }
