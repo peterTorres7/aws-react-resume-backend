@@ -36,6 +36,8 @@ resource "aws_appautoscaling_policy" "visits_table_read_policy" {
     }
 
     target_value = 70.0
+    scale_in_cooldown = 60
+    scale_out_cooldown = 60
   }
 }
 
@@ -56,9 +58,11 @@ resource "aws_appautoscaling_policy" "visits_table_write_policy" {
 
   target_tracking_scaling_policy_configuration {
     predefined_metric_specification {
-      predefined_metric_type = "DynamoDBWriceCapacityUtilization"
+      predefined_metric_type = "DynamoDBWriteCapacityUtilization"
     }
 
     target_value = 70.0
+    scale_in_cooldown = 60
+    scale_out_cooldown = 60
   } 
 }
