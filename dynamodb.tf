@@ -67,14 +67,14 @@ resource "aws_appautoscaling_policy" "visits_table_write_policy" {
   } 
 }
 
-resource "aws_dynamodb_table_item" "visits" {
+resource "aws_dynamodb_table_item" "visits_table_visits_count" {
   table_name = aws_dynamodb_table.visits_table.name
   hash_key = aws_dynamodb_table.visits_table.hash_key
 
   item = <<ITEM
 {
   "id": {"S": "1"},
-  "visit_count": {"N": "1"}
+  "visits_count": {"N": "1"}
 }
 ITEM
 }
